@@ -19,9 +19,9 @@ def get_streams(media_type, media_id, config):
         "hdhub4u": "https://hdhub4u.work",
         "uhdmovies": "https://uhdmovies.vip",
         "moviesdrive": "https://moviesdrive.info",
-        "streamimdb.ru": "https://streamimdb.ru",
-        "streamex.sh": "https://streamex.sh",
-        "67movies.net": "https://67movies.net/"
+        "streamimdb": "https://streamimdb.ru",
+        "streamex": "https://streamex.sh",
+        "67movies": "https://67movies.net"
     }
     
     base_url = domains.get(target_provider, "https://pages.dev")
