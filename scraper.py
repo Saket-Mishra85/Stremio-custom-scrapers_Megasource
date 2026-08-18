@@ -11,17 +11,16 @@ def get_streams(media_type, media_id, config):
     streams = []
     
     # 1. Base domain configurations mapped from Nuvio files
-    # Change target_provider to toggle between the specific sites from the directory
-    # Options: "vegamovies", "hdhub4u", "uhdmovies", "moviesdrive", "streamimdb.ru", "streamex.sh", ""67movies.net"
-    target_provider = "hdhub4u.work" 
+    # Options: "vegamovies", "hdhub4u", "uhdmovies", "moviesdrive", "streamimdb.ru", "streamex.sh", "67movies.net"
+    target_provider = "hdhub4u" 
     
     domains = {
-        "vegamovies": "https://pages.dev", # Using stable mirrors
+        "vegamovies": "https://pages.dev", 
         "hdhub4u": "https://hdhub4u.work",
         "uhdmovies": "https://uhdmovies.vip",
-        "moviesdrive": "https://moviesdrive.info"
-        "streamimdb.ru": "https://streamimdb.ru"
-        "streamex.sh": "https://streamex.sh"
+        "moviesdrive": "https://moviesdrive.info",
+        "streamimdb.ru": "https://streamimdb.ru",
+        "streamex.sh": "https://streamex.sh",
         "67movies.net": "https://67movies.net/"
     }
     
