@@ -5,15 +5,15 @@ from bs4 import BeautifulSoup
 
 def get_streams(media_type, media_id, config):
     streams = []
-    target_provider = "hdhub4u" 
+    target_provider = "streamimdb" 
     
     domains = {
-        "vegamovies": "https://pages.dev", 
-        "hdhub4u": "https://hdhub4u.work",
-        "uhdmovies": "https://uhdmovies.vip",
-        "moviesdrive": "https://moviesdrive.info",
         "streamimdb": "https://streamimdb.ru",
         "streamex": "https://streamex.sh",
+        "vegamovies": "https://vegamoviese.co", 
+        "hdhub4u": "https://hdhub4u.bi",
+        "uhdmovies": "https://uhdmovies.autos",
+        "moviesdrive": "https://moviesdrives.cfd",
         "67movies": "https://67movies.net"
     }
     
