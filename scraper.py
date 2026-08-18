@@ -25,15 +25,29 @@ def get_streams(media_type, media_id, config):
         "Accept-Language": "en-US,en;q=0.9"
     }
 
-    query_title = config.get("title") or "Movie"
+    pure_id = media_id
     season = None
     episode = None
 
     if ":" in media_id:
         parts = media_id.split(":")
+        pure_id = parts[0]
         if len(parts) > 2:
             season = parts[1]
             episode = parts[2]
+
+    query_title = ""
+    try:
+        meta_url = f"https://strem.io{media_type}/{pure_id}.json"
+        meta_res = requests.get(meta_url, timeout=5)
+        if meta_res.status_code == 200:
+            meta_data = meta_res.json()
+            query_title = meta_data.get("meta", {}).get("name", "")
+    except:
+        pass
+
+    if not query_title:
+        query_title = config.get("title") or "Movie"
 
     search_query = query_title
     if media_type == "series" and season and episode:
@@ -56,7 +70,7 @@ def get_streams(media_type, media_id, config):
             for item in articles:
                 link_element = item if item.name == 'a' else item.find('a', href=True)
                 if link_element and base_url in link_element['href']:
-                    if any(word.lower() in link_element.text.lower() for word in query_title.split()):
+                    if any(word.lower() in link_element.text.lower() for word in query_title.split() if len(word) > 2):
                         target_post_url = link_element['href']
                         break
 
@@ -88,7 +102,7 @@ def get_streams(media_type, media_id, config):
     if not streams:
         return [{
             "name": f"❌ {target_provider.upper()}",
-            "title": "No mirrored sources indexed for this file selection.",
+            "title": f"No links indexed on site for: {query_title}",
             "url": ""
         }]
 
